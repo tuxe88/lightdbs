@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+
+
+{% block css %}
+
+    <link href="{{asset('bundles/microbletcore/plugins/bower_components/datatables/jquery.dataTables.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" rel="stylesheet" type="text/css" />
+
+
+
+{% endblock %}
+
+{% block content %}
+    
+    <div class="row bg-title">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h3 class="page-title">Subir back up</h3>
+            
+        <div class="row">
+        <div class="col-sm-12 ol-md-12 col-xs-12">
+            <div class="white-box">
+                <h4 class="box-title">Seleccione el archivo que desea respaldar en nuestros servidores</h4>
+                    
+                    <div class="col-sm-12">
+                        <div class="white-box">
+                            <h3 class="box-title m-b-0">Backups de {usuario}</h3>
+                            <p class="text-muted m-b-30">Usted tiene {{backups|length}} backups almacenados en LightDBS</p>
+                            <div class="table-responsive">
+                                <div id="back-up-table-wrapper" class="dataTables_wrapper no-footer">
+                                <table id="back-up-table" class="table table-bordered mcs-table" role="grid" aria-describedby="back-up-table-info">
+                                    <thead>
+                                        <tr role="row">
+                                            <th style="width: 70%;">Nombre</th>
+                                            <th style="width: 10%;">Fecha</th>
+                                            <th style="width: 10%;">Tamaño</th>
+                                            <th style="width: 10%;"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for backup in backups %}
+                                        <tr role="row" class="odd">
+                                            <td class="sorting_1">{{backup.name}}</td>
+                                            <td>{{backup.uploadDate|date("d/m/Y H:i")}}</td>
+                                            <td>20MB{#{{backup.size}}#}</td>
+                                            <td>
+                                                <button onclick="downloadFile({{backup.id}})" class="btn btn-success"><i class="mdi mdi-cloud-download"></i></button>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            
+        </div>
+    </div>
+            
+            
+        </div>
+    </div>
+    
+    
+
+{% endblock %}
+
+{% block js %}
+    
+    <script src="{{asset('js/jquery.ui.widget.js')}}"></script>
+    <script src="{{asset('js/jquery.iframe-transport.js')}}"></script>
+    <script src="{{asset('js/blueimp/jquery.fileupload.js')}}"></script>
+    <script src="{{asset('js/chunkUpload/chunkUpload.js')}}"></script>
+    <script src="{{asset('bundles/microbletcore/plugins/bower_components/datatables/jquery.dataTables.min.js')}}"></script>
+    
+    {#<script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>#}
+    <script>
+        
+        function downloadFile(id){
+            
+            //alert(id);
+            
+            $.post( "{{url('download')}}",
+                    {id:id}, 
+                    function( data ) {
+                        console.log(data.success);
+                        //window.location.href = data.success;
+                        window.location =  data.success;
+                    }
+            ).fail(function(error){
+                if(error.status==500 || error.status==0){
+                    alert("Ocurrió un error");  
+                }
+            });
+            
+        }
+        
+    </script>
+
+{% endblock %}

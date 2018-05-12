@@ -1,0 +1,71 @@
+{% extends '@MicrobletCore/base.html.twig' %}
+
+{% set service_name = 'LightDBS' %}
+
+{% block css %}
+
+{%endblock%}
+
+{% block listServices %}
+    <li class="col-sm-3">
+      <ul>
+          <li class="dropdown-header">Seccion 1</li>
+          {% for i in 1..5%}
+              <li><a href="#">Service {{i}}</a></li>
+          {% endfor %}
+      </ul>
+    </li>
+    <li class="col-sm-3">
+      <ul>
+          <li class="dropdown-header">Seccion 2</li>
+          {% for i in 1..3%}
+              <li><a href="#">Service {{i}}</a></li>
+          {% endfor %}
+      </ul>
+    </li>
+    <li class="col-sm-3">
+      <ul>
+          <li class="dropdown-header">Seccion 3</li>
+          {% for i in 1..4%}
+              <li><a href="#">Service {{i}}</a></li>
+          {% endfor %}
+      </ul>
+    </li>
+    <li class="col-sm-3">
+      <ul>
+          <li class="dropdown-header">Seccion 4</li>
+          {% for i in 1..2%}
+              <li><a href="#">Service {{i}}</a></li>
+          {% endfor %}
+      </ul>
+    </li>
+{%endblock%}
+
+{%block menu%}
+
+    <li class="devider" style="margin: 0px !important; padding: 0px !important;"></li>
+    
+    <li> 
+        <a href="#" class="waves-effect" disabled="">MIS BACK UPS</a>
+    </li>
+    
+    <li> 
+        <a href="{{path('upload')}}" class="waves-effect"><i  class="mdi mdi-cloud-upload fa-fw"></i> <span class="hide-menu">Subir</span></a> 
+    </li>
+    
+    <li> 
+        <a href="{{path('list_back_up')}}" class="waves-effect"><i  class="mdi mdi-format-list-bulleted-type fa-fw"></i> <span class="hide-menu">Ver</span></a> 
+    </li>
+    
+    <li class="devider"></li>
+    <li> 
+        <a href="#" class="waves-effect"><i  class="mdi mdi-help-circle-outline fa-fw"></i> <span class="hide-menu">Contacto</span></a> 
+    </li>
+  
+{%endblock%}
+
+{% block content %}{%endblock%}
+
+{% block js%}
+
+{%endblock%}

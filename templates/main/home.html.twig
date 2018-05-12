@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+
+{% block css %}
+
+    
+{#    <link rel="stylesheet" href="{{asset('bundles/microbletcore/plugins/bower_components/dropify/dist/css/dropify.min.css')}}">
+#}
+
+{% endblock %}
+
+{% block content %}
+    
+    <div class="row bg-title">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title"><i class="mdi mdi-cube-send fa-fw"></i> Instancias QuickLog</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3 col-sm-6 col-xs-12">
+            <div class="white-box analytics-info">
+                <h3 class="box-title">Total Visit</h3>
+                <ul class="list-inline two-part">
+                    <li>
+                        <div id="sparklinedash"><canvas width="67" height="30" style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas></div>
+                    </li>
+                    <li class="text-right"><i class="ti-arrow-up text-success"></i> <span class="counter text-success">659</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-6 col-xs-12">
+            <div class="white-box analytics-info">
+                <h3 class="box-title">Total Page Views</h3>
+                <ul class="list-inline two-part">
+                    <li>
+                        <div id="sparklinedash2"><canvas width="67" height="30" style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas></div>
+                    </li>
+                    <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class="counter text-purple">869</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-6 col-xs-12">
+            <div class="white-box analytics-info">
+                <h3 class="box-title">Unique Visitor</h3>
+                <ul class="list-inline two-part">
+                    <li>
+                        <div id="sparklinedash3"><canvas width="67" height="30" style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas></div>
+                    </li>
+                    <li class="text-right"><i class="ti-arrow-up text-info"></i> <span class="counter text-info">911</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-6 col-xs-12">
+            <div class="white-box analytics-info">
+                <h3 class="box-title">Bounce Rate</h3>
+                <ul class="list-inline two-part">
+                    <li>
+                        <div id="sparklinedash4"><canvas width="67" height="30" style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas></div>
+                    </li>
+                    <li class="text-right"><i class="ti-arrow-down text-danger"></i> <span class="text-danger">18%</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block js %}
+    
+    <script src="{{asset('js/jquery.ui.widget.js')}}"></script>
+    <script src="{{asset('js/jquery.iframe-transport.js')}}"></script>
+    <script src="{{asset('js/blueimp/jquery.fileupload.js')}}"></script>
+    <script src="{{asset('js/chunkUpload/chunkUpload.js')}}"></script>
+    
+{% endblock %}
